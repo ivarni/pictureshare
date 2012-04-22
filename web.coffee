@@ -1,6 +1,10 @@
 app = require('express').createServer() #express.logger()
 io = require('socket.io').listen app
 
+io.configure () ->
+  io.set 'transports', ['xhr-polling']
+  io.set 'polling duration', 10
+
 require 'jade'
 app.set 'view engine', 'jade'
 app.set 'view options', { layout: false }
