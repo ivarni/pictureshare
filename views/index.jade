@@ -1,0 +1,21 @@
+!!! 5
+html(lang='en')
+  head
+    title pictureshare
+    link(rel='stylesheet', type='text/css', href='/css/pictureshare.css')
+    script(src='/js/jquery-1.7.2.js')
+    script(src='/socket.io/socket.io.js')
+    script(src='/js/pictureshare.js')
+  body
+    #heading
+      h1 Pictureshare
+    #content
+      #pictures
+        ul#picture_list
+      #movies
+        ul#movie_list
+    #footer
+      p
+        span#client_count 0
+        |  connected clients
+      
