@@ -9,14 +9,9 @@ require 'jade'
 app.set 'view engine', 'jade'
 app.set 'view options', { layout: false }
 
-activeClients = 0;
-
 io.sockets.on 'connection', (socket) ->
-  activeClients += 1
-  io.sockets.json.send { clients: activeClients }
-  socket.on 'disconnect', () ->
-    activeClients -= 1
-    io.sockets.json.send { clients: activeClients }
+  socket.on 'message', (data) ->
+    io.sockets.json.send { data: data }
 
 app.get '/*.(js|css)', (req, res) ->
   res.sendfile './public' + req.url

@@ -1,9 +1,13 @@
 function msgReceived(msg) {
-  $clientCounter.html(msg.clients);
+  $echoField.html(msg.data);
 }
 
 $(document).ready(function() {
-  $clientCounter = $('#client_count');
+  $echoField = $('#echoField');
+  $inputField = $('#inputField');
+  $inputField.keyup(function() {
+    socket.send($(this).val());
+  });
 
   var socket = io.connect();
   socket.on('message', function(msg) {
