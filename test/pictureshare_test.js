@@ -1,7 +1,7 @@
 buster.testCase('When the app is created', {
   setUp: function() {
     var renderStub = { render: function(){}};
-    this.viewStub = sinon.stub(window.views, 'AppView');
+    this.viewStub = sinon.stub(window.views, 'FormView');
     this.viewStub.returns(renderStub);
     this.renderStub = sinon.stub(renderStub, 'render');    
     this.socketStub = sinon.stub(io, 'connect');
@@ -15,7 +15,7 @@ buster.testCase('When the app is created', {
     this.socketStub.restore();
   },
 
-  'it renders the main view': function() {
+  'it renders the form view': function() {
     assert(this.viewStub.called);
     assert(this.renderStub.called);
   },

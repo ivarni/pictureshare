@@ -29,7 +29,8 @@ app.get('/js/client/:path', function(req, res) {
 });
 
 app.get('/js/shared/:path', function(req, res) {
-  res.sendfile('./lib/shared' + req.params.path);
+  console.log(req.params.path);
+  res.sendfile('./lib/shared/' + req.params.path);
 });
 
 app.get('/', function(req, res) {
