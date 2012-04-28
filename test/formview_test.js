@@ -35,15 +35,6 @@ buster.testCase('FormView', {
       expect(this.viewStub).toHaveBeenCalledWith('foo');
     }
 
-  },
-
-  'when the value of the input box changes': {
-    'it updates the model': function() {
-      buster.log($(this.view.el).find('input').val('text'));      
-      buster.log($(this.view.el).find('input').trigger('change'));
-
-      assert.match(this.view.model.get('value'), 'text');
-    }
   }
 
 });
