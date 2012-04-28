@@ -12,7 +12,11 @@ app.set('view options', { layout: false });
 
 io.sockets.on('connection', function(socket) {
   socket.on('message', function(data) {
-    io.sockets.json.send({ data: data });
+    for (k in data) {
+      console.log(k);
+    }
+    console.log('data: ' + data.file);
+    io.sockets.json.send(data);
   });
 });
 

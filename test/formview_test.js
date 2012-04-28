@@ -30,8 +30,9 @@ buster.testCase('FormView', {
     },
 
     'it calls the save method on the controller': function() {
+      this.view.model.set('value', 'foo');
       $(this.view.el).find('button.save').trigger('click');
-      expect(this.viewStub).toHaveBeenCalled();
+      expect(this.viewStub).toHaveBeenCalledWith('foo');
     }
 
   },
