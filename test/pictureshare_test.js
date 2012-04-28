@@ -52,8 +52,8 @@ buster.testCase('Pictureshare Controller', {
   'when a new file gets created': {
 
     'the data is sent to the server' : function() {
-      this.app.newFile('data');
-      expect(this.sendStub).toHaveBeenCalledWith({ file: 'data' });
+      this.app.newFile('data', 'asdadasdadasdsa');
+      expect(this.sendStub).toHaveBeenCalledWith({ file: 'data', data:'asdadasdadasdsa' });
     }
 
   },

@@ -4,6 +4,7 @@ var io = require('socket.io').listen(app);
 io.configure(function() {
   io.set('transports', ['xhr-polling']);
   io.set('polling duration', 10);
+  io.set('log level', 1);
 });
 
 require('jade');
@@ -12,10 +13,6 @@ app.set('view options', { layout: false });
 
 io.sockets.on('connection', function(socket) {
   socket.on('message', function(data) {
-    for (k in data) {
-      console.log(k);
-    }
-    console.log('data: ' + data.file);
     io.sockets.json.send(data);
   });
 });
@@ -33,7 +30,6 @@ app.get('/js/client/:path', function(req, res) {
 });
 
 app.get('/js/shared/:path', function(req, res) {
-  console.log(req.params.path);
   res.sendfile('./lib/shared/' + req.params.path);
 });
 
