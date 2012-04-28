@@ -16,8 +16,20 @@ io.sockets.on('connection', function(socket) {
   });
 });
 
-app.get('/*.(js|css)', function(req, res) {
+app.get('/*.css', function(req, res) {
   res.sendfile('./public' + req.url);
+});
+
+app.get('/js/vendor*.js', function(req, res) {
+  res.sendfile('./public' + req.url);
+});
+
+app.get('/js/client/:path', function(req, res) {
+  res.sendfile('./lib/client/' + req.params.path);
+});
+
+app.get('/js/shared/:path', function(req, res) {
+  res.sendfile('./lib/shared' + req.params.path);
 });
 
 app.get('/', function(req, res) {

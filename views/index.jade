@@ -3,9 +3,12 @@ html(lang='en')
   head
     title pictureshare
     link(rel='stylesheet', type='text/css', href='/css/pictureshare.css')
-    script(src='/js/jquery-1.7.2.js')
+    script(src='/js/vendor/jquery-1.7.2.js')
+    script(src='/js/vendor/underscore.js')
+    script(src='/js/vendor/backbone.js')
     script(src='/socket.io/socket.io.js')
-    script(src='/js/pictureshare.js')
+    script(src='/js/client/app.js')
+    script(src='/js/client/pictureshare.js')
   body
     #heading
       h1 Pictureshare
