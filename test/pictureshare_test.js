@@ -1,8 +1,26 @@
 buster.testCase('When the app is created', {
-  'it renders the main view': function() {
-    this.stub = sinon.stub(window.views, 'AppView');
+  setUp: function() {
+    var renderStub = { render: function(){}};
+    this.viewStub = sinon.stub(window.views, 'AppView');
+    this.viewStub.returns(renderStub);
+    this.renderStub = sinon.stub(renderStub, 'render');    
+    this.socketStub = sinon.stub(io, 'connect');
+    this.socketStub.returns({ on: function(){}});
     var app = new PictureShareApp();
     app.init();
-    assert(this.stub.called);
+  },
+
+  tearDown: function() {
+    this.viewStub.restore();
+    this.socketStub.restore();
+  },
+
+  'it renders the main view': function() {
+    assert(this.viewStub.called);
+    assert(this.renderStub.called);
+  },
+
+  'it connects to its socket': function() {
+    assert(this.socketStub.called);
   }
 });
