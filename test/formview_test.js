@@ -1,7 +1,7 @@
 buster.testCase('FormView', {
   setUp: function() {
     this.view = new views.FormView({
-      model : new models.FormModel()
+      model : new models.FileModel()
     });
     this.view.render(); 
   },
