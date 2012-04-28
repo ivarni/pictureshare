@@ -23,18 +23,4 @@ buster.testCase('FormView', {
     }
   },
 
-  'when the save button is clicked': {
-    setUp: function() {
-      window.app = { newFile: function(){} };
-      this.viewStub = sinon.stub(window.app, 'newFile');
-    },
-
-    'it calls the save method on the controller': function() {
-      this.view.model.set('value', 'foo');
-      $(this.view.el).find('button.save').trigger('click');
-      expect(this.viewStub).toHaveBeenCalledWith('foo');
-    }
-
-  }
-
 });
